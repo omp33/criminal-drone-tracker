@@ -40,31 +40,6 @@ My goal is a system where fixed surveillance cameras detect the threat, and with
 
 ---
 
-## What 🚀
-
-- **Real-Time Threat Detection:**
-  - Detects and confirms threatening behavior (like gun aiming) in live video.
-
-- **Seamless Ground-to-Drone Handover:**
-  - As soon as a threat is confirmed, the drone can immediately begin tracking using the latest, most accurate profile.
-
-- **Dynamic, Continually-Learning Suspect Profile:**
-  - Stores and updates up to 7 distinct images/features per criminal for robust re-identification.
-
-- **Efficient, Scalable Matching:**
-  - Uses FAISS and vectorized NumPy for fast, scalable matching—capable of handling large crowds and multiple suspects in real time.
-
-- **Threaded I/O and Frame Skipping:**
-  - Ensures high FPS and smooth operation by offloading slow operations and only processing a subset of frames.
-
-- **Modular, Extensible Design:**
-  - Ready for further expansion—such as integrating drone launch logic, live location streaming, or more advanced drone mobility control.
-
-- **Actively Developed:**
-  - Still learning and building, especially on the drone-side: next steps include automating drone launch, improving aerial suspect re-identification, and adding real-time mobility control and live location streaming for law enforcement.
-
----
-
 ## Quick Start ⚡
 
 ### Requirements
