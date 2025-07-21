@@ -91,7 +91,7 @@ pip install torch torchvision opencv-python ultralytics faiss-cpu numpy pillow
 ## Contact & Contributing
 - Open to feedback, suggestions, and collaboration!
 - Feel free to open issues or pull requests.
-- Connect with me on [LinkedIn](https://www.linkedin.com/)
+- Connect with me on [LinkedIn](https://www.linkedin.com/in/omprakash-patel-a06703279/)
 
 ---
 
