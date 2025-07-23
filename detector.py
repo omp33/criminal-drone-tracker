@@ -412,13 +412,13 @@ def initialize_faiss_index():
             if hasattr(faiss, 'StandardGpuResources'):
                 res = faiss.StandardGpuResources()
                 feature_index = faiss.index_cpu_to_gpu(res, 0, feature_index) # Move index to GPU 0
-                print("🚀 Using FAISS GPU acceleration")
+                print("Using FAISS GPU acceleration")
             else:
                 # Fallback for older FAISS versions or other configurations
-                print("⚠️ FAISS GPU not available via StandardGpuResources, trying fallback or using CPU version")
+                print("FAISS GPU not available via StandardGpuResources, trying fallback or using CPU version")
                 # You might need faiss.GpuResources or direct index_cpu_to_gpu with a GpuIndex
         except Exception as e:
-            print(f"⚠️ FAISS GPU initialization failed: {e}, using CPU version")
+            print(f"FAISS GPU initialization failed: {e}, using CPU version")
     
     return feature_index
 
@@ -536,7 +536,7 @@ if __name__ == "__main__":
     
     # Load video
     # IMPORTANT: Update this path to your video file
-    video_path = r"C:\Users\Omprakash\Desktop\pthon\t1.mp4"
+    video_path = r".mp4"
     cap = cv2.VideoCapture(video_path)
 
     # Initialize OpenCV window
@@ -546,7 +546,7 @@ if __name__ == "__main__":
     total_threats = 0 # Keeps track of the maximum number of threats detected simultaneously
     active_threats = 0 # Number of threats in the current frame
 
-    print("🚨 Starting criminal detection...")
+    print("Starting criminal detection...")
     print("Press 'q' to quit, 'p' for performance summary (currently placeholder)")
 
     FRAME_SKIP = 2 # Process every Nth frame to improve performance
@@ -613,14 +613,14 @@ if __name__ == "__main__":
                                 # Save time is negligible due to threading here.
                                 
                                 detection_stopped = True # Stop detection after a criminal is identified and saved
-                                print(f"🛑 Detection stopped after saving criminal {person_id}")
+                                print(f"Detection stopped after saving criminal {person_id}")
                                 
                             current_frame_threats += 1 # Increment current frame threat count
                             
                             # Print threat details to console
                             left_angle = analysis['left_arm_angle'] if analysis['left_arm_angle'] is not None else "N/A"
                             right_angle = analysis['right_arm_angle'] if analysis['right_arm_angle'] is not None else "N/A"
-                            print(f"🚨 PERSISTENT THREAT - Person {j+1}: "
+                            print(f" PERSISTENT THREAT - Person {j+1}: "
                                   f"Left arm straight: {analysis['left_arm_straight']}, "
                                   f"Right arm straight: {analysis['right_arm_straight']}, "
                                   f"Left angle: {left_angle}, Right angle: {right_angle}")
