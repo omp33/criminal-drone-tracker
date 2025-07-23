@@ -80,7 +80,7 @@ def load_saved_criminal_data():
             'confidence_scores': []
         }
     
-    print(f"🎯 Loaded {len(saved_criminal_features)} criminals for tracking")
+    print(f"Loaded {len(saved_criminal_features)} criminals for tracking")
     
     update_multi_feature_matrix(tracking_data)
 
@@ -139,7 +139,7 @@ def update_criminal_data(person_id, new_image, new_feature, frame_count, similar
             
             update_multi_feature_matrix(tracking_data)
             
-            print(f"🔄 Added image {len(tracking_data[person_id]['stored_images'])}/7 for criminal {person_id} (similarity: {similarity:.3f})")
+            print(f"Added image {len(tracking_data[person_id]['stored_images'])}/7 for criminal {person_id} (similarity: {similarity:.3f})")
 
 def save_updated_criminal_data(person_id, feature, image, frame_count, image_index):
     """Save updated criminal data to disk"""
@@ -202,11 +202,11 @@ def initialize_faiss_index_multi():
             if hasattr(faiss, 'StandardGpuResources'):
                 res = faiss.StandardGpuResources()
                 faiss_index = faiss.index_cpu_to_gpu(res, 0, faiss_index)
-                print("🚀 Using FAISS GPU acceleration for multi-image matching")
+                print("Using FAISS GPU acceleration for multi-image matching")
             else:
-                print("⚠️ FAISS GPU not available, using CPU version for multi-image matching")
+                print("FAISS GPU not available, using CPU version for multi-image matching")
         except Exception as e:
-            print(f"⚠️ FAISS GPU initialization failed: {e}, using CPU version for multi-image matching")
+            print(f"FAISS GPU initialization failed: {e}, using CPU version for multi-image matching")
     
     return faiss_index
 
@@ -321,7 +321,7 @@ def mark_criminal_found(frame, bbox, person_id, similarity, display_image=None, 
     color = (0, 0, 255)
     cv2.rectangle(frame, (x1, y1), (x2, y2), color, 3)
     
-    label = f"🚨 CRIMINAL FOUND - ID: {person_id} (Image {image_index+1})"
+    label = f"CRIMINAL FOUND - ID: {person_id} (Image {image_index+1})"
     cv2.putText(frame, label, (x1, y1-10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
     
     similarity_text = f"Match: {similarity:.3f}"
@@ -348,12 +348,12 @@ def mark_criminal_found(frame, bbox, person_id, similarity, display_image=None, 
 
 yolo_model = YOLO("yolov8s.pt")
 
-drone_video_path = r"C:\Users\Omprakash\Desktop\pthon\tracs.mp4"
+drone_video_path = r".mp4"
     
 cap = cv2.VideoCapture(drone_video_path)
     
 if not cap.isOpened():
-    print(f"❌ Could not open video: {drone_video_path}")
+    print(f"Could not open video: {drone_video_path}")
     pass
     
 cv2.startWindowThread()
@@ -363,15 +363,14 @@ frame_count = 0
 criminals_found = 0
 tracking_history = defaultdict(list)
     
-print("🚁 Starting real-time drone criminal tracking with MULTI-IMAGE MATCHING...")
-print(f"🎯 Using similarity threshold: {SIMILARITY_THRESHOLD}")
-print(f"🔄 Update threshold: {UPDATE_THRESHOLD}")
-print(f"📊 Update frequency: every {UPDATE_FREQUENCY} frames")
-print(f"🖼️ Max images per criminal: {MAX_IMAGES_PER_CRIMINAL}")
-print(f"🔍 Min similarity for new image: {MIN_SIMILARITY_FOR_NEW_IMAGE}")
-print(f"📹 Video path: {drone_video_path}")
-print(f"🔍 Processing every 3rd frame")
-print(f"🎯 YOLO confidence: 0.4")
+print("Starting real-time drone criminal tracking with MULTI-IMAGE MATCHING...")
+print(f"Using similarity threshold: {SIMILARITY_THRESHOLD}")
+print(f"Update threshold: {UPDATE_THRESHOLD}")
+print(f"Update frequency: every {UPDATE_FREQUENCY} frames")
+print(f"Max images per criminal: {MAX_IMAGES_PER_CRIMINAL}")
+print(f" Min similarity for new image: {MIN_SIMILARITY_FOR_NEW_IMAGE}")
+print(f"Video path: {drone_video_path}")
+print(f"Processing every 3rd frame")
 print("Press 'q' to quit, 't' to adjust threshold, 'p' for performance summary")
     
 while cap.isOpened():
